@@ -37,7 +37,6 @@
 </template>
 
 <script>
-import cButton from "@/components/cButton/cButton";
 export default {
   data() {
     return {
@@ -81,9 +80,6 @@ export default {
       }
       alert(`点击事件触发:类型-${type},名称-${e.target.innerText}`);
     }
-  },
-  components: {
-    cButton
   }
 };
 </script>
