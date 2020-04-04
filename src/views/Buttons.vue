@@ -1,55 +1,91 @@
 <template>
   <div class="container">
-    <div class="buttonGroup">
-      <Button @click="handleClick">默认按钮</Button>
-      <Button type="primary">主要按钮</Button>
-      <Button type="success">成功按钮</Button>
-      <Button type="info">信息按钮</Button>
-      <Button type="warning">警告按钮</Button>
-      <Button type="danger">危险按钮</Button>
+    <div class="cButtonGroup">
+      <cButton @click="handleClick">默认按钮</cButton>
+      <cButton
+        @click="handleClick"
+        v-for="(data,index) in btnType"
+        :key="index"
+        :type="data.type"
+      >{{data.name}}</cButton>
     </div>
-    <div class="buttonGroup">
-      <Button plain>朴素按钮</Button>
-      <Button plain type="primary">主要按钮</Button>
-      <Button plain type="success">成功按钮</Button>
-      <Button plain type="info">信息按钮</Button>
-      <Button plain type="warning">警告按钮</Button>
-      <Button plain type="danger">危险按钮</Button>
+    <div class="cButtonGroup">
+      <cButton @click="handleClick" plain>简单按钮</cButton>
+      <cButton
+        @click="handleClick"
+        plain
+        v-for="(data,index) in btnType"
+        :key="index"
+        :type="data.type"
+      >{{data.name}}</cButton>
     </div>
-    <div class="buttonGroup">
-      <Button @click="handleClick" disabled>禁用按钮</Button>
-      <Button disabled type="primary">主要按钮</Button>
-      <Button disabled type="success">成功按钮</Button>
-      <Button disabledtype="info">信息按钮</Button>
-      <Button disabled type="warning">警告按钮</Button>
-      <Button disabled type="danger">危险按钮</Button>
+    <div class="cButtonGroup">
+      <cButton disabled>禁用按钮</cButton>
+      <cButton disabled v-for="(data,index) in btnType" :key="index" :type="data.type">{{data.name}}</cButton>
     </div>
-    <div class="buttonGroup">
-      <Button round>圆角按钮</Button>
-      <Button round type="primary">主要按钮</Button>
-      <Button round type="success">成功按钮</Button>
-      <Button round type="info">信息按钮</Button>
-      <Button round type="warning">警告按钮</Button>
-      <Button round type="danger">危险按钮</Button>
+    <div class="cButtonGroup">
+      <cButton @click="handleClick" round>圆角按钮</cButton>
+      <cButton
+        @click="handleClick"
+        round
+        v-for="(data,index) in btnType"
+        :key="index"
+        :type="data.type"
+      >{{data.name}}</cButton>
     </div>
   </div>
 </template>
 
 <script>
-import Button from '@/components/Button/Button'
+import cButton from "@/components/cButton/cButton";
 export default {
-  data () {
-    return {}
+  data() {
+    return {
+      btnType: [
+        {
+          type: "primary",
+          name: "主要按钮"
+        },
+        {
+          type: "success",
+          name: "成功按钮"
+        },
+        {
+          type: "info",
+          name: "信息按钮"
+        },
+        {
+          type: "warning",
+          name: "警告按钮"
+        },
+        {
+          type: "danger",
+          name: "危险按钮"
+        }
+      ]
+    };
   },
   methods: {
-    handleClick (e) {
-      alert('点击事件触发: ', e)
+    handleClick(e) {
+      var type = e.target.classList[2] || 'default';
+      switch (type) {
+        case "default":
+          type="默认按钮"
+          break;
+        case "plain":
+          type="简单按钮"
+          break;
+        case "round":
+          type="圆角按钮"
+          break;
+      }
+      alert(`点击事件触发:类型-${type},名称-${e.target.innerText}`);
     }
   },
   components: {
-    Button
+    cButton
   }
-}
+};
 </script>
 <style scoped>
 .container {
@@ -57,7 +93,7 @@ export default {
   flex-direction: column;
 }
 
-.buttonGroup {
+.cButtonGroup {
   padding-top: 10px;
   display: flex;
   align-items: center;
