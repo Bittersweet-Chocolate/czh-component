@@ -1,11 +1,37 @@
 <template>
-  <div class="message" :class="type">{{text}}</div>
+  <div :class="messageStyle">{{text}}</div>
 </template>
 <script>
 export default {
+  data: _ => {
+    {
+      messageStyle: ["message"];
+    }
+  },
   props: {
     text: { type: String, default: "default" },
-    type: { type: String, default: "success" },
+    type: { type: String, default: "success" }
+  },
+  mounted() {
+    if (this.type) {
+      this.messageStyle.push(`${this.type}`);
+    }
+    setTimeout(() => {
+      this.messageStyle.push("show");
+    }, 0);
+    setTimeout(() => {
+      this.close();
+    }, 3000);
+  },
+  methods: {
+    close() {
+      const index = this.messageStyle.findIndex(item => item === "show");
+      this.messageStyle.splice(index, 1);
+      setTimeout(() => {
+        this.$el.remove();
+        this.$destroy();
+      }, 400);
+    }
   }
 };
 </script>
