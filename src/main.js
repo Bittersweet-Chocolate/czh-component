@@ -8,6 +8,27 @@ Vue.config.productionTip = false
 
 Vue.component('cButton', cButton)
 Vue.component('cMessage', cMessage)
+
+Vue.prototype.$message = ({
+  type = 'success',
+  text = ''
+}) => {
+  createMessage({
+    type,
+    text
+  })
+}
+
+function createMessage (propsData) {
+  const Constructor = Vue.extend(cMessage)
+  const msg = new Constructor({
+    propsData
+  })
+  msg.$mount()
+  document.body.appendChild(msg.$el)
+  return msg
+}
+
 new Vue({
   router,
   render: h => h(App)

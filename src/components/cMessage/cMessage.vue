@@ -3,19 +3,18 @@
 </template>
 <script>
 export default {
-  data: _ => {
-    {
-      messageStyle: ["message"];
-    }
+  data() {
+    return {
+      messageStyle: ["message"]
+    };
   },
   props: {
     text: { type: String, default: "default" },
-    type: { type: String, default: "success" }
+    type: { type: String, default: "success top" }
   },
   mounted() {
-    if (this.type) {
-      this.messageStyle.push(`${this.type}`);
-    }
+    if (!this.type) return;
+    this.messageStyle.push(this.type);
     setTimeout(() => {
       this.messageStyle.push("show");
     }, 0);
@@ -29,6 +28,7 @@ export default {
       this.messageStyle.splice(index, 1);
       setTimeout(() => {
         this.$el.remove();
+        // 销毁组件
         this.$destroy();
       }, 400);
     }
@@ -36,13 +36,19 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+$tarnsTop: translate(-50%, -50px);
+$tarnsBottom: translate(-50%, 50px);
+$tarnsLeft: translate(-50px, 0);
+$tarnsRight: translate(0, 0);
+
+$tarnsLT: translate(-50px, -50px);
+$tarnsRT: translate(0, -50px);
+$tarnsLB: translate(0, 50px);
+$tarnsRB: translate(0, 50px);
 .message {
   position: fixed;
-  left: 50%;
-  top: 10px;
   display: flex;
   align-items: center;
-  transform: translate(-50%, -50px);
   padding: 10px 16px;
   font-size: 14px;
   color: #fff;
@@ -50,11 +56,6 @@ export default {
   opacity: 0;
   transition: all 0.3s ease-in-out;
   z-index: 999;
-
-  &.show {
-    transform: translate(-50%, 10px);
-    opacity: 1;
-  }
 
   &.success {
     background-color: #67c23a;
@@ -70,6 +71,86 @@ export default {
 
   &.danger {
     background-color: #f56c6c;
+  }
+}
+
+.t {
+  transform: $tarnsTop;
+  left: 50%;
+  top: 10px;
+  &.show {
+    transform: translate(-50%, 10px);
+    opacity: 1;
+  }
+}
+
+.b {
+  transform: $tarnsBottom;
+  left: 50%;
+  bottom: 10px;
+  &.show {
+    transform: translate(-50%, -10px);
+    opacity: 1;
+  }
+}
+
+.l {
+  transform: $tarnsLeft;
+  left: 0;
+  top: 50%;
+  &.show {
+    transform: translate(50px, 0);
+    opacity: 1;
+  }
+}
+
+.r {
+  transform: $tarnsRight;
+  right: 0;
+  top: 50%;
+  &.show {
+    transform: translate(-50px, 0);
+    opacity: 1;
+  }
+}
+
+.lt {
+  transform: $tarnsLT;
+  left: 0;
+  top: 10px;
+  &.show {
+    transform: translate(50px, 10px);
+    opacity: 1;
+  }
+}
+
+.rt {
+  transform: $tarnsRT;
+  right: 0;
+  top: 10px;
+  &.show {
+    transform: translate(-50px, 10px);
+    opacity: 1;
+  }
+}
+
+.lb {
+  transform: $tarnsLB;
+  left: 0;
+  bottom: 10px;
+  &.show {
+    transform: translate(50px, -10px);
+    opacity: 1;
+  }
+}
+
+.rb {
+  transform: $tarnsRB;
+  right: 0;
+  bottom: 10px;
+  &.show {
+    transform: translate(-50px, -10px);
+    opacity: 1;
   }
 }
 </style>

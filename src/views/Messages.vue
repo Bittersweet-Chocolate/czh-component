@@ -1,25 +1,33 @@
 <template>
   <div>
-    <div class="container">
-      <cButton @click="open1" plain type="success">上弹出</cButton>
-      <cButton @click="open2" plain type="info">下弹出</cButton>
-      <cButton @click="open3" plain type="warning">左弹出</cButton>
-      <cButton @click="open4" plain type="danger">右弹出</cButton>
-
-      <cButton @click="open1" round type="success">左上弹出</cButton>
-      <cButton @click="open2" round type="info">右上弹出</cButton>
-      <cButton @click="open3" round type="warning">左下弹出</cButton>
-      <cButton @click="open4" round type="danger">右下弹出</cButton>
+    <div class="container" @click="message">
+      <cButton
+        v-for="(item,index) in msgType"
+        :key="index"
+        :plain="index>3?true:false"
+        :type="item"
+        :data-index="index"
+      >{{msgText[index]}}</cButton>
     </div>
   </div>
 </template>
 <script>
 export default {
+  data() {
+    return {
+      msgType: ["success t", "info b", "warning l", "danger r",
+      "success lt", "info lb", "warning rt", "danger rb"],
+      msgText: ["上弹出", "下弹出", "左弹出", "右弹出",
+      "左上弹出", "左下弹出", "右上弹出", "右下弹出"]
+    };
+  },
   methods: {
-    open1() {},
-    open2() {},
-    open3() {},
-    open4() {}
+    message(el) {
+      this.$message({
+        type: this.msgType[el.target.dataset.index],
+        text: this.msgText[el.target.dataset.index]
+      });
+    }
   }
 };
 </script>
@@ -35,7 +43,7 @@ export default {
   align-items: center;
   flex-wrap: wrap;
 }
-button{
-  margin: 10px
+button {
+  margin: 10px;
 }
 </style>
