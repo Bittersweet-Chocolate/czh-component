@@ -35,12 +35,12 @@ export default {
 
 <style lang="scss" scoped>
   $margin: calc(100% + 10px);
-  @mixin horizontal-alignment {
+  @mixin horizontal-align {
     left: 50%;
     transform: translateX(-50%);
   }
 
-  @mixin vertical-aliment {
+  @mixin vertical-align {
     top: 50%;
     transform: translateY(-50%);
   }
@@ -69,45 +69,45 @@ export default {
 
     &.top {
       bottom: $margin;
-      @include horizontal-alignment;
+      @include horizontal-align;
 
       &::before {
         border-top-color: #303030;
         top: 100%;
-        @include horizontal-alignment;
+        @include horizontal-align;
       }
     }
 
     &.bottom {
       top: $margin;
-      @include horizontal-alignment;
+      @include horizontal-align;
 
       &::before {
         border-bottom-color: #303030;
         bottom: 100%;
-        @include horizontal-alignment
+        @include horizontal-align;
       }
     }
 
     &.left {
       right: $margin;
-      @include vertical-aliment;
+      @include vertical-align;
 
       &::before {
         border-left-color: #303030;
         left: 100%;
-        @include vertical-aliment;
+        @include vertical-align;
       }
     }
 
     &.right {
       left: $margin;
-      @include vertical-aliment;
+      @include vertical-align;
 
       &::before {
         right: 100%;
         border-right-color: #303030;
-        @include vertical-aliment;
+        @include vertical-align;
       }
     }
   }

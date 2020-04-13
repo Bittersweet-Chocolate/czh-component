@@ -28,8 +28,5 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  button {
-    margin: 0 10px;
-  }
 }
 </style>
