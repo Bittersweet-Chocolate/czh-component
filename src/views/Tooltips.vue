@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <cTooltip v-for="(item,index) in type" :key="index">
-      <cButton plain type="success">左 - left</cButton>
+    <cTooltip v-for="(item,index) in type" :key="index" :content="text[index]" :show="item">
+      <cButton plain :type=bType[index]>{{text[index]}}</cButton>
     </cTooltip>
   </div>
 </template>
@@ -11,7 +11,8 @@ export default {
   data() {
     return {
       type: ["left", "top", "bottom", "right"],
-      text: ["这是左边", "这是上边", "这是下边", "这是右边"]
+      text: ["这是左边", "这是上边", "这是下边", "这是右边"],
+      bType: ["primary","success","info","danger"]
     };
   }
 };
