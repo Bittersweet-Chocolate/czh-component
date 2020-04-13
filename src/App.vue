@@ -2,8 +2,9 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/buttons">按钮</router-link> |
-      <router-link to="/messages">弹出层</router-link>
+      <router-link to="/Buttons">按钮</router-link> |
+      <router-link to="/Messages">弹出层</router-link> |
+      <router-link to="/Tooltips">提示标签</router-link> |
     </div>
     <router-view/>
   </div>

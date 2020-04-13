@@ -19,6 +19,11 @@ const routes = [
     path: '/messages',
     name: 'Messages',
     component: () => import('../views/Messages.vue')
+  },
+  {
+    path: '/tooltips',
+    name: 'Tooltips',
+    component: () => import('../views/Tooltips.vue')
   }
 ]
 
