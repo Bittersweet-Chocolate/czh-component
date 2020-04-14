@@ -5,6 +5,7 @@
       <router-link to="/Buttons">按钮</router-link> |
       <router-link to="/Messages">弹出层</router-link> |
       <router-link to="/Tooltips">提示标签</router-link> |
+      <router-link to="/Tabs">选项卡</router-link> |
     </div>
     <router-view/>
   </div>
