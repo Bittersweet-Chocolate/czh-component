@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-
+import Home from '../views/Home'
+import Buttons from '@/views/Buttons'
+import Tooltips from '@/views/Tooltips'
+import Messages from '@/views/Messages'
+import Tabs from '@/views/Tabs'
+import Loading from '@/views/Loading'
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,23 +17,32 @@ const routes = [
   {
     path: '/buttons',
     name: 'Buttons',
-    component: () => import('../views/Buttons.vue')
+    component: Buttons
   },
   {
     path: '/messages',
     name: 'Messages',
-    component: () => import('../views/Messages.vue')
+    component: Messages
   },
   {
     path: '/tooltips',
     name: 'Tooltips',
-    component: () => import('../views/Tooltips.vue')
+    component: Tooltips
   },
   {
     path: '/tabs',
     name: 'Tabs',
-    component: () => import('../views/Tabs.vue')
-  }
+    component: Tabs
+  },
+  {
+    path: '/loading',
+    name: 'Loading',
+    component: Loading
+  },
+  {
+    path: '*',
+    redirect: '/'
+  },
 ]
 
 const router = new VueRouter({

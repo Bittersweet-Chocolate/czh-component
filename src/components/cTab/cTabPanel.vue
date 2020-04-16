@@ -5,16 +5,16 @@
 </template>
 <script>
 export default {
-  data(){
+  data () {
     return {
-      visible:false
+      visible: false
     }
   },
   props: {
-    label: {type:String, required: true},
-    value:{type:String,}
+    label: { type: String, required: true },
+    value: { type: String }
   }
-};
+}
 </script>
 <style scoped>
 .tab-panel {

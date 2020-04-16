@@ -4,13 +4,13 @@ import router from './router'
 import cButton from '@/components/cButton/cButton'
 import cMessage from '@/components/cMessage/cMessage'
 import cTooltip from '@/components/cTooltip/cTooltip'
-
+import cLoading from '@/components/cLoading/cLoading'
 Vue.config.productionTip = false
 
 Vue.component('cButton', cButton)
 Vue.component('cMessage', cMessage)
 Vue.component('cTooltip', cTooltip)
-
+Vue.component('cLoading', cLoading)
 Vue.prototype.$message = ({
   type = 'success',
   text = ''

@@ -16,17 +16,17 @@
 
 <script>
 export default {
-  data(){
+  data () {
     return {
-      isVisible : false
+      isVisible: false
     }
   },
-  props:{
-    content:{type: String, default: "标签"},
-    show:{type: String, default: "top"}
+  props: {
+    content: { type: String, default: '标签' },
+    show: { type: String, default: 'top' }
   },
-  methods:{
-    handleToggle() {
+  methods: {
+    handleToggle () {
       this.isVisible = !this.isVisible
     }
   }

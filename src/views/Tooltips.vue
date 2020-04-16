@@ -8,14 +8,14 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      type: ["left", "top", "bottom", "right"],
-      text: ["这是左边", "这是上边", "这是下边", "这是右边"],
-      bType: ["primary","success","info","danger"]
-    };
+      type: ['left', 'top', 'bottom', 'right'],
+      text: ['这是左边', '这是上边', '这是下边', '这是右边'],
+      bType: ['primary', 'success', 'info', 'danger']
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

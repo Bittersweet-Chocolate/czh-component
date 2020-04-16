@@ -29,31 +29,31 @@
   </div>
 </template>
 <script>
-import cTab from "../components/cTab/cTab";
-import cTabPanel from "../components/cTab/cTabPanel";
+import cTab from '../components/cTab/cTab'
+import cTabPanel from '../components/cTab/cTabPanel'
 export default {
-  data() {
+  data () {
     return {
-      type: "user",
-      user: "user"
-    };
+      type: 'user',
+      user: 'user'
+    }
   },
-  updated() {
-    console.log(this.type);
+  updated () {
+    console.log(this.type)
   },
   methods: {
-    onTabChange(index) {
-      console.log("tab changes: ", index);
+    onTabChange (index) {
+      console.log('tab changes: ', index)
     },
-    message(el) {
+    message (el) {
       this.$message({
         type: el.target.className,
         text: el.target.innerText
-      });
+      })
     }
   },
   components: { cTab, cTabPanel }
-};
+}
 </script>
 <style scoped>
 .container {

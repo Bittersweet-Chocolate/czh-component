@@ -22,33 +22,33 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       tabs: [],
       activeIndex: 0,
       childrenLength: 0
-    };
+    }
   },
   props: {
     onlyHeader: { type: Boolean },
     noBar: { type: Boolean },
     active: { type: String },
-    height: { type: Number, default: 2 },
+    height: { type: Number, default: 2 }
   },
-  mounted() {
-    this.init(this.active);
+  mounted () {
+    this.init(this.active)
     if (!this.noBar) {
       setTimeout(() => {
-        this.loadLine(0);
-      }, 0);
+        this.loadLine(0)
+      }, 0)
     }
     if (this.onlyHeader) {
-      this.$refs.content.remove();
+      this.$refs.content.remove()
     }
-    this.childrenLength = this.$children.length;
+    this.childrenLength = this.$children.length
   },
   methods: {
-     init(activeName){
+    init (activeName) {
       this.$children.forEach((ele, index) => {
         this.tabs.push(ele.label)
         if (activeName === ele.value) {
@@ -60,28 +60,28 @@ export default {
       })
     },
 
-    loadLine(index) {
+    loadLine (index) {
       this.$refs.line.style.width = `${this.$refs.header[index].offsetWidth}px`
       this.$refs.line.style.transform = `translateX(${this.$refs.header[index].offsetLeft}px)`
     },
 
-    handleTagChange(index) {
+    handleTagChange (index) {
       (this.$children[this.activeIndex]).visible = false
-      let ele = this.$children[index]
+      const ele = this.$children[index]
       ele.visible = true
       this.activeIndex = index
       if (!this.noBar) {
         this.loadLine(index)
       }
-    },
+    }
   },
-  computed:{
+  computed: {
     // 等分当前宽度
-    spanWidth() {
+    spanWidth () {
       return `${(1 / (this.childrenLength)) * 100}%`
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 $blue: #409eff;
