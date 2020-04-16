@@ -1,40 +1,50 @@
 <template>
-  <div id="container-loading" class="bg-dark" v-if="loading">
+  <div class="loader-bg" v-if="loading">
+    <div class="loader-message">
+      <h3 class="title">{{title}}</h3>
+      <p>{{message}}</p>
+    </div>
     <div class="loader-main">
       <div></div>
       <div></div>
       <div></div>
       <div></div>
     </div>
-    <h3 class="title">{{tilte}}</h3>
-    <p>{{message}}</p>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      loading: true
+      loading: true,
+      loadingTime: null
     };
   },
   props: {
     showL: { type: Boolean, default: true },
-    tilte: { type: String, default: "ChenZH UI" },
+    title: { type: String, default: "ChenZH UI" },
     message: { type: String, default: "description" },
-    time: { type: String }
+    time: { type: String, default: "1000" }
   },
-  mounted() {
-    if (this.time) {
-      setTimeout(_ => {
-        this.loading = false;
-      }, this.time);
-    }
+  created() {
+    // console.log(1);
+    this.loadingTime = setTimeout(_ => {
+      this.loading = false;
+    }, this.time);
+  },
+  updated() {
+    this.loadingTime = setTimeout(_ => {
+      this.loading = false;
+    }, this.time);
+  },
+  beforeDestroy() {
+    this.loadingTime = null;
   }
 };
 </script>
 <style lang="scss" scoped>
 $accentColor: #3eaf7c;
-.bg-dark {
+.loader-bg {
   background-color: white;
   display: block;
   position: absolute;
@@ -45,7 +55,7 @@ $accentColor: #3eaf7c;
     position: fixed;
     width: 120px;
     height: 50px;
-    top: 45%;
+    top: 55%;
     left: 50%;
     z-index: 555;
     transform: translate(-50%, 0);
@@ -101,14 +111,20 @@ $accentColor: #3eaf7c;
       }
     }
   }
-  .title {
-    margin: 8rem auto 2rem;
-    text-align: center;
-    color: #2c3e50;
-    font-size: 30px;
-    box-sizing: border-box;
-    padding: 0 10px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  .loader-message {
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    .title {
+      // margin: 10% auto 2%;
+      text-align: center;
+      color: #2c3e50;
+      font-size: 30px;
+      box-sizing: border-box;
+      padding: 0 10px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
   }
 }
 @keyframes pacman-balls {
