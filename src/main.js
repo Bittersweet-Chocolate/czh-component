@@ -12,7 +12,7 @@ Vue.component('cMessage', cMessage)
 Vue.component('cTooltip', cTooltip)
 Vue.component('cLoading', cLoading)
 Vue.prototype.$message = ({
-  type = 'success',
+  type = 'default',
   text = ''
 }) => {
   createMessage({

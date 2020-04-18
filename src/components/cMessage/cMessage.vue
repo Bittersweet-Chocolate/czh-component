@@ -3,37 +3,37 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
-      messageStyle: ['message']
-    }
+      messageStyle: ["message"]
+    };
   },
   props: {
-    text: { type: String, default: 'default' },
-    type: { type: String, default: 'success top' }
+    text: { type: String, default: "default" },
+    type: { type: String, default: "default t" }
   },
-  mounted () {
-    if (!this.type) return
-    this.messageStyle.push(this.type)
+  mounted() {
+    if (!this.type) return;
+    this.messageStyle.push(this.type);
     setTimeout(() => {
-      this.messageStyle.push('show')
-    }, 0)
+      this.messageStyle.push("show");
+    }, 0);
     setTimeout(() => {
-      this.close()
-    }, 3000)
+      this.close();
+    }, 3000);
   },
   methods: {
-    close () {
-      const index = this.messageStyle.findIndex(item => item === 'show')
-      this.messageStyle.splice(index, 1)
+    close() {
+      const index = this.messageStyle.findIndex(item => item === "show");
+      this.messageStyle.splice(index, 1);
       setTimeout(() => {
-        this.$el.remove()
+        this.$el.remove();
         // 销毁组件
-        this.$destroy()
-      }, 400)
+        this.$destroy();
+      }, 400);
     }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 $tarnsTop: translate(-50%, -50px);
@@ -56,6 +56,10 @@ $tarnsRB: translate(0, 50px);
   opacity: 0;
   transition: all 0.3s ease-in-out;
   z-index: 999;
+
+  &.default {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
 
   &.success {
     background-color: #67c23a;

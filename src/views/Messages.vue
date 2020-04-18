@@ -15,7 +15,7 @@
 export default {
   data () {
     return {
-      msgType: ['success t', 'info b', 'warning l', 'danger r',
+      msgType: ['default t', 'info b', 'warning l', 'danger r',
         'success lt', 'info lb', 'warning rt', 'danger rb'],
       msgText: ['上弹出', '下弹出', '左弹出', '右弹出',
         '左上弹出', '左下弹出', '右上弹出', '右下弹出']

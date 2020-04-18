@@ -26,8 +26,7 @@ export default {
     return {
       loadingTitle: "这是加载标题",
       loadingMesage: "这是加载信息",
-      loadingTime: "2000",
-      pShow: false
+      loadingTime: "2000"
     };
   },
   methods: {
