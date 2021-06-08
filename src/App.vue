@@ -1,3 +1,10 @@
+<!--
+ * @Author: czh
+ * @Date: 2021-06-08 21:00:08
+ * @LastEditTime: 2021-06-08 23:24:43
+ * @LastEditors: czh
+ * @Description: 
+-->
 <template>
   <div id="app">
     <cLoading time="1000" :title="loadingTitle" :message="loadingMesage"></cLoading>
@@ -12,16 +19,20 @@
     <router-view />
   </div>
 </template>
-<script>
+<script lang="ts">
+import { ref } from "vue";
 export default {
-  data() {
+  setup() {
+    const loading = ref(true)
+    const loadingMesage = ref('组件填充中...')
+    const loadingTitle = ref('mine UI')
     return {
-      loading: true,
-      loadingMesage: "组件填充中...",
-      loadingTitle: "CZH UI"
+      loading,
+      loadingMesage,
+      loadingTitle
     };
   }
-};
+}
 </script>
 <style lang="scss">
 #app {

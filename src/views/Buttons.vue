@@ -1,3 +1,10 @@
+<!--
+ * @Author: czh
+ * @Date: 2021-06-08 21:00:08
+ * @LastEditTime: 2021-06-08 23:48:31
+ * @LastEditors: czh
+ * @Description: 
+-->
 <template>
   <div class="container">
     <div class="cButtonGroup">
@@ -36,8 +43,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { reactive } from 'vue'
 export default {
+  setup() {
+    
+  }
   data () {
     return {
       btnType: [
@@ -65,7 +76,7 @@ export default {
     }
   },
   methods: {
-    handleClick (e) {
+    handleClick (e:any) {
       var type = e.target.classList[2] || 'default'
       switch (type) {
         case 'default':

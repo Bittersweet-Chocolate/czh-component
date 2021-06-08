@@ -1,3 +1,10 @@
+<!--
+ * @Author: czh
+ * @Date: 2021-06-08 21:00:08
+ * @LastEditTime: 2021-06-08 23:38:17
+ * @LastEditors: czh
+ * @Description: 
+-->
 <template>
   <div>
     <cLoading
@@ -20,18 +27,19 @@
     </div>
   </div>
 </template>
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent({
   data() {
     return {
       loadingTitle: "这是加载标题",
       loadingMesage: "这是加载信息",
-      loadingTime: "2000"
+      loadingTime: 2000
     };
   },
   methods: {
     startLoading() {
-      var time = this.loadingTime;
+      const time = this.loadingTime;
       if (time < 500) {
         this.$message({
           type: "warning t",
@@ -42,7 +50,7 @@ export default {
       this.$refs.loading.loading = true;
     }
   }
-};
+})
 </script>
 <style lang="scss" scoped>
 .container {
