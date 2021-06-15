@@ -1,7 +1,7 @@
 <!--
  * @Author: czh
  * @Date: 2021-06-08 21:00:08
- * @LastEditTime: 2021-06-08 23:38:17
+ * @LastEditTime: 2021-06-15 23:17:42
  * @LastEditors: czh
  * @Description: 
 -->
@@ -28,29 +28,16 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
-export default defineComponent({
-  data() {
+import { ref } from "vue";
+export default {
+  setup() {
     return {
-      loadingTitle: "这是加载标题",
-      loadingMesage: "这是加载信息",
-      loadingTime: 2000
-    };
-  },
-  methods: {
-    startLoading() {
-      const time = this.loadingTime;
-      if (time < 500) {
-        this.$message({
-          type: "warning t",
-          text: "加载时间请大于500ms"
-        });
-        return;
-      }
-      this.$refs.loading.loading = true;
-    }
+      loadingTitle: ref("这是加载标题"),
+      loadingMesage: ref("这是加载信息"),
+      loadingTime: ref(2000)
   }
-})
+}
+}
 </script>
 <style lang="scss" scoped>
 .container {

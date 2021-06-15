@@ -1,7 +1,14 @@
+<!--
+ * @Author: czh
+ * @Date: 2021-06-08 21:00:08
+ * @LastEditTime: 2021-06-15 23:45:36
+ * @LastEditors: czh
+ * @Description: 
+-->
 <template>
   <div>
     <div class="container">
-      <cTab :active="user" :value.sync="user" @tab-change="onTabChange">
+      <cTab :active="user" v-mode="user" @tab-change="onTabChange">
         <cTabPanel label="one" value="user">
           选项卡-one
           <br />测试数据
@@ -11,7 +18,7 @@
       </cTab>
     </div>
     <div class="container">
-      <cTab :active="type" :value.sync="type" noBar @tab-change="onTabChange">
+      <cTab :active="type" v-mode="type" noBar @tab-change="onTabChange">
         <cTabPanel label="按钮" value="user">
           <cButton plain>普通按钮</cButton>
         </cTabPanel>
@@ -21,7 +28,7 @@
       </cTab>
     </div>
     <div class="container">
-      <cTab :active="type" :value.sync="type" noBar onlyHeader>
+      <cTab :active="type" v-mode="type" noBar onlyHeader>
         <cTabPanel label="无滚动条" value="-"></cTabPanel>
         <cTabPanel label="无数据" value="+"></cTabPanel>
       </cTab>

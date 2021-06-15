@@ -1,10 +1,18 @@
+/*
+ * @Author: czh
+ * @Date: 2021-06-08 21:00:08
+ * @LastEditTime: 2021-06-15 23:15:12
+ * @LastEditors: czh
+ * @Description: 
+ */
 // 禁用eslint
 module.exports = {
   lintOnSave: false,
+
   pages: {
     index: {
       // 页面入口
-      entry: 'src/main.js',
+      entry: 'src/main.ts',
       // 模板来源
       template: 'public/index.html',
       // 在 dist/index.html 的输出
@@ -21,4 +29,11 @@ module.exports = {
     // 输出文件名会被推导为 `subpage.html`
     // subpage: 'src/main.js'
   },
+
+  pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'sass',
+      patterns: []
+    }
+  }
 }
