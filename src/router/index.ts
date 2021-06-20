@@ -1,17 +1,12 @@
 /*
  * @Author: czh
  * @Date: 2021-06-08 21:00:08
- * @LastEditTime: 2021-06-15 23:44:43
+ * @LastEditTime: 2021-06-21 00:32:16
  * @LastEditors: czh
  * @Description: 
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Home from '@/views/Home.vue'
-// import Buttons from '@/views/Buttons.vue'
-// import Tooltips from '@/views/Tooltips.vue'
-// import Messages from '@/views/Messages.vue'
-// import Tabs from '@/views/Tabs.vue'
-// import Loading from '@/views/Loading.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -19,11 +14,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Home',
     component: Home
   },
-  // {
-  //   path: '/buttons',
-  //   name: 'Buttons',
-  //   component: Buttons
-  // },
+  {
+    path: '/buttons',
+    name: 'Buttons',
+    component: () => import(/* webpackChunkName: "buttons" */ '@/views/Buttons.vue')
+  },
   // {
   //   path: '/messages',
   //   name: 'Messages',
@@ -44,10 +39,6 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Loading',
      component: () => import(/* webpackChunkName: "loading" */ '@/views/Loading.vue')
   }
-  // {
-  //   path: '*',
-  //   redirect: '/'
-  // },
 ]
 
 const router = createRouter({

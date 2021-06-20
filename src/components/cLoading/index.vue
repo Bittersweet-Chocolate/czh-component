@@ -1,8 +1,8 @@
 <template>
-  <div class="loader-bg" v-if="loading">
+  <div class="loader-bg" v-if="isLoading">
     <div class="loader-message">
-      <h3 class="title">{{title}}</h3>
-      <p>{{message}}</p>
+      <h3 class="title">{{ title }}</h3>
+      <p>{{ message }}</p>
     </div>
     <div class="loader-main">
       <div></div>
@@ -12,35 +12,45 @@
     </div>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      loading: true,
-      loadingTime: null
-    };
-  },
+<script lang="ts">
+import {
+  reactive,
+  defineComponent,
+  onBeforeUnmount,
+  toRefs
+} from "vue";
+// loading 接口
+interface loading {
+  isLoading: Boolean;
+  runLoading: Number;
+}
+export default defineComponent({
   props: {
-    showL: { type: Boolean, default: true },
     title: { type: String, default: "ChenZH UI" },
     message: { type: String, default: "description" },
-    time: { type: String, default: "1000" }
+    time: { type: Number, default: 1000 },
   },
-  created() {
-    // console.log(1);
-    this.loadingTime = setTimeout(_ => {
-      this.loading = false;
-    }, this.time);
-  },
-  updated() {
-    this.loadingTime = setTimeout(_ => {
-      this.loading = false;
-    }, this.time);
-  },
-  beforeDestroy() {
-    this.loadingTime = null;
+  // loading 组件加载
+  setup(props, { attrs }) {
+    onBeforeUnmount(() => {
+      attrs.runLoading = null;
+    });
+    // onUpdated(() => {
+    //   attrs.runLoading = setTimeout(() => {
+    //     attrs.isLoading = false;
+    //   }, props.time)
+    // });
+    const data: loading = reactive({
+      isLoading: true,
+      runLoading: setTimeout(() => {
+        data.isLoading = false;
+      }, props.time),
+    });
+    return {
+      ...toRefs(data),
+    };
   }
-};
+});
 </script>
 <style lang="scss" scoped>
 $accentColor: #3eaf7c;

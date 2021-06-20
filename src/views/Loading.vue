@@ -1,43 +1,52 @@
 <!--
  * @Author: czh
  * @Date: 2021-06-08 21:00:08
- * @LastEditTime: 2021-06-15 23:17:42
+ * @LastEditTime: 2021-06-21 00:22:23
  * @LastEditors: czh
  * @Description: 
 -->
 <template>
   <div>
-    <cLoading
-      :time="loadingTime"
-      ref="loading"
-      :title="loadingTitle"
-      :message="loadingMesage"
-      style="z-index:98!important"
-    ></cLoading>
+    <c-loading
+      :time="time"
+      :title="title"
+      :message="message"
+      ref="loadingRef"
+      style="z-index: 98 !important"
+    ></c-loading>
     <div class="container">
       <form class="loading-form">
-        <p>加载标题：
-        <input type="text" v-model="loadingTitle" /></p>
-        <p>加载信息：
-        <input type="text" v-model="loadingMesage" /></p>
-        <p>加载时间(ms)：
-        <input type="number" v-model="loadingTime" /></p>
+        <p>加载标题： <input type="text" v-model="title" /></p>
+        <p>加载信息： <input type="text" v-model="message" /></p>
+        <p>加载时间(ms)： <input type="number" v-model="time" /></p>
       </form>
-      <cButton @click="startLoading">重新加载</cButton>
+      <c-button @click="startLoading">重新加载</c-button>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { ref } from "vue";
-export default {
+import { ref, defineComponent } from "vue"
+export default defineComponent({
+  name: "showLoading",
   setup() {
+    const title = ref<String>("这是加载标题");
+    const message = ref<String>("这是加载信息");
+    const time = ref<Number>(2000);
+    const loadingRef = ref<null | HTMLElement>(null);
+    const startLoading = () => {
+      if (time.value < 500) {
+        return;
+      }
+      
+    };
     return {
-      loadingTitle: ref("这是加载标题"),
-      loadingMesage: ref("这是加载信息"),
-      loadingTime: ref(2000)
-  }
-}
-}
+      title,
+      message,
+      time,
+      startLoading,
+    };
+  },
+});
 </script>
 <style lang="scss" scoped>
 .container {
@@ -53,7 +62,7 @@ export default {
 }
 .loading-form {
   padding: 15px;
-  p{
+  p {
     font-size: 14px;
     text-align: right;
   }

@@ -8,22 +8,26 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {}
-  },
-  props: {
-    type: { type: String, default: 'default' },
+import {
+  defineComponent,
+  ref
+} from "vue";
+export default defineComponent({
+   props: {
+    type: { type: String },
     round: { type: Boolean },
     plain: { type: Boolean },
     disabled: { type: Boolean }
   },
-  methods: {
-    handleClick (e) {
+  setup(){
+    const handleClick = ref<Function>((e)=>{
       this.$emit('click', e)
+    })
+    return {
+      handleClick
     }
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>
